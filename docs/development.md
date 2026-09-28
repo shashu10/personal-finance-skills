@@ -1,5 +1,10 @@
 # Working inside a larger private workspace
 
+Readers can install through a prompt or `npx skills add`, as shown in the README.
+The commands here are for agents and contributors maintaining a local checkout. For
+a fresh end-user setup, follow the self-contained
+[agent runtime instructions](../skills/finance-setup/references/runtime.md).
+
 This repository can be a child directory of a private project containing other repos.
 It has its own `.git` boundary. Use `git -C /path/to/personal-finance-skills ...` for
 all Git operations. Do not initialize or stage the parent workspace.
@@ -39,7 +44,8 @@ of literal values to detect without printing them. Keep that file outside this r
 Schema/behavior tests use synthetic temporary workspaces and require no broker login,
 market-data subscription, or model API key.
 
-The bundled plugin manifest describes the skills; it does not automatically configure
-broker MCP servers or install Python dependencies. The local-folder installer is the
-tested development path. Optional research packages are installed in separate virtual
+The bundled plugin manifest and skills installers distribute the skills; they do not
+automatically configure broker MCP servers or install Python dependencies. The setup
+skill handles those runtime prerequisites. The local-folder installer remains useful
+for linked development. Optional research packages are installed in separate virtual
 environments at recorded upstream revisions; update pins deliberately and re-test.

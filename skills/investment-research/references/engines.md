@@ -3,6 +3,9 @@
 The shared core performs deterministic calculations and exports; it does not contain
 TradingAgents, Vibe-Trading, a broker login, or a hosted language model. Use normal
 research tools without these engines when that is sufficient.
+Read the private workspace's `setup.md`, when present, for the source checkout and
+configured interpreter. Handle installation and commands yourself; ask the user for
+needed choices or credentials through the supported setup flow, not a shell checklist.
 
 ## Project integrations when available
 

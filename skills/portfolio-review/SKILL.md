@@ -12,6 +12,8 @@ inputs. A stock's research rating and suitability for this portfolio are separat
 
 Use the installed `finance-core`; inspect `finance-core --help` if needed. The runtime
 must be installed from the trusted project checkout in a dedicated environment.
+Read the private workspace's `setup.md` to resolve the configured interpreter. Run
+the commands yourself; explain results and needed inputs in ordinary language.
 Read `ledger.json`, `rules.json`, `facts.json`, and `decisions.json` in the selected
 private workspace. Resolve superseded records and distinguish confirmed decisions
 from earlier model suggestions. This skill is usable without sibling skills.

@@ -7,19 +7,21 @@ description: Set up a private personal finance workspace, shared calculation run
 
 Create a usable private workspace and explain what is known, missing, and connected.
 Start with the user's immediate question; do not require a complete financial biography.
+Perform installation and calculation commands yourself using the host's tools. Keep
+the user-facing flow conversational; do not hand the user a Python setup checklist.
+Ask for help only when a required capability, permission, or login is unavailable.
 
 ## Establish the runtime and workspace
 
 1. Reuse the user's existing workspace and configured environment when known.
    Otherwise select a private directory outside the public source checkout and confirm
    the base currency. A new currency choice does not imply residence or nationality.
-2. Run `finance-core --help` in the installed runtime. If unavailable, locate the
-   user's trusted `personal-finance-skills` checkout and inspect its `pyproject.toml`.
-   Create a dedicated virtual environment and install that checkout with its Python:
-   `python -m pip install -e /absolute/path/to/personal-finance-skills`.
-   Use the resulting environment's `finance-core` or `python -m finance_core`.
-   If no checkout is available, identify the missing runtime; do not invent a package
-   index name, repository URL, or an installation that did not occur.
+2. Reuse a working `finance-core` command when available. Otherwise follow
+   [runtime setup](references/runtime.md) to obtain the official source and install
+   its helpers in an isolated environment. A global skills install may contain only
+   skill folders, so a missing source checkout is expected and can be fetched by you.
+   Record the working runtime path for later skills; do not modify global PATH or
+   unrelated environments merely to make a bare command available.
 3. Initialize with `finance-core init --workspace /private/path --base-currency USD`,
    replacing the illustrative path and currency with the user's choices.
    Use `--demo` only when explicitly requesting synthetic demonstration data in a
@@ -63,7 +65,8 @@ authentication and data coverage have been checked in current official documenta
 
 ## Handoff
 
-Return the private workspace path, runtime command, base currency, and account coverage.
+Save the runtime command in a private setup note for later agent sessions. Tell the
+user where their records live, the base currency, and which accounts are covered.
 Describe accounts as connected, awaiting export, or unknown; an empty ledger is not
 a zero net worth. Identify the next useful missing input rather than a long questionnaire.
 The workspace should contain `ledger.json`, `transactions.json`, `lots.json`,
