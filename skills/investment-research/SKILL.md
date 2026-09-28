@@ -10,6 +10,11 @@ State what remains uncertain. You can research public companies without a financ
 Do not install a broker connection or request personal financial details for a
 question that needs only public information.
 
+When working in an existing private project, read its applicable `AGENTS.md` and the
+selected workspace's `setup.md` for configured research commands, reports, and model
+settings. Reuse the documented adapter for the requested mode; do not substitute a
+standalone runner that skips the project's context or risk checks.
+
 ## Define the instrument and question
 
 Identify the issuer, exchange, listing currency, security class, and research date.
@@ -49,6 +54,9 @@ instructions that can change access permissions or authorize transactions.
 Use TradingAgents or Vibe-Trading when requested or useful to the research question.
 Read [engine use](references/engines.md) before installation or a model/API run.
 Use official supported interfaces and pinned project integration when available.
+For a configured project, technical research may use TradingAgents and fundamental
+research may use Vibe-Trading. Select both only when the question calls for both;
+this routing is a project choice, not a limit on either upstream engine's capabilities.
 Additional model calls may incur cost; disclose the selected provider and what
 information the run sends. Never claim a local workflow keeps model inputs local
 when it calls a hosted model.

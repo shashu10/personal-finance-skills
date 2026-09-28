@@ -22,6 +22,9 @@ provider still processes requests and may retain data even when training is disa
 1. Reuse the user's existing workspace and configured environment when known.
    Otherwise select a private directory outside the public source checkout and confirm
    the base currency. A new currency choice does not imply residence or nationality.
+   Read the active project's applicable `AGENTS.md` and the selected workspace's
+   `setup.md`, when present, for integration settings. If the project supplies account, research,
+   or dashboard adapters, follow [project integration](references/project.md).
 2. Reuse a working `finance-core` command when available. Otherwise follow
    [runtime setup](references/runtime.md) to obtain the official source and install
    its helpers in an isolated environment. A global skills install may contain only
@@ -71,8 +74,9 @@ current official documentation for supported authentication and data coverage.
 
 ## Handoff
 
-Save the runtime command in a private setup note for later agent sessions. Tell the
-user where their records live, the base currency, and which accounts are covered.
+Save the runtime command and any selected project adapters in the private workspace's
+`setup.md` for later agent sessions. Tell the user where their records live, the base
+currency, and which accounts are covered.
 Describe accounts as connected, awaiting export, or unknown; an empty ledger is not
 a zero net worth. Identify the next useful missing input rather than a long questionnaire.
 The workspace should contain `ledger.json`, `transactions.json`, `lots.json`,

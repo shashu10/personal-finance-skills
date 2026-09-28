@@ -22,7 +22,7 @@ class InstallSkillsTests(unittest.TestCase):
 
     def test_link_is_idempotent_and_edits_stay_visible(self):
         target = self.root / "target"
-        self.assertEqual(len(installer.install(target, source=self.source)), 6)
+        self.assertEqual(len(installer.install(target, source=self.source)), len(installer.NAMES))
         self.assertEqual(installer.install(target, source=self.source), [])
         (self.source / installer.NAMES[0] / "SKILL.md").write_text("changed")
         self.assertEqual((target / installer.NAMES[0] / "SKILL.md").read_text(), "changed")
@@ -47,6 +47,23 @@ class InstallSkillsTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             installer.install(target, source=self.source)
         self.assertTrue((target / installer.NAMES[-1]).is_symlink())
+
+    def test_existing_six_links_gain_dashboard_without_replacement(self):
+        target = self.root / "target"
+        target.mkdir()
+        previous = (
+            "finance-setup", "finance-gather", "investment-research",
+            "portfolio-review", "finance-plan", "finance-memory",
+        )
+        for name in previous:
+            (target / name).symlink_to(self.source / name, target_is_directory=True)
+        original_links = {name: (target / name).lstat().st_ino for name in previous}
+
+        self.assertEqual(installer.install(target, source=self.source),
+                         [str(target.resolve() / "finance-dashboard")])
+        self.assertEqual({name: (target / name).lstat().st_ino for name in previous}, original_links)
+        self.assertEqual(installer.install(target, source=self.source), [])
+        self.assertEqual({p.name for p in target.iterdir()}, set(installer.NAMES))
 
 
 if __name__ == "__main__":

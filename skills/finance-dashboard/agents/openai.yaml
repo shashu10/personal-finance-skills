@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Dashboard"
+  short_description: "Read an existing local finance dashboard"
+  default_prompt: "Use $finance-dashboard to open my local finance dashboard and check data coverage and report dates."

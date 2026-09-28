@@ -18,8 +18,11 @@ be inferred from balances, location, employer or account type.
 
 Use the installed `finance-core` runtime; inspect `finance-core --help` if needed.
 It must be installed from the trusted project checkout in a dedicated environment.
-Read the private workspace's `setup.md` to resolve the configured interpreter. Run
-the commands yourself; explain results and needed inputs in ordinary language.
+Read the selected private workspace's `setup.md` and the active project's applicable
+`AGENTS.md`, when present, to resolve the interpreter and any documented status or summary adapter.
+Reuse those interfaces where supported; keep the normalized workspace separate from
+the project's original records. Run the commands yourself and explain results and
+needed inputs in ordinary language.
 This skill does not require a sibling skill or a hosted research engine.
 Keep scenario inputs, calculations and reports in the private workspace.
 

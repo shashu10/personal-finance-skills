@@ -9,8 +9,11 @@ Produce a sourced account snapshot with explicit coverage and reconciliation.
 Use the installed `finance-core` runtime; run `finance-core --help` if its interface
 is unfamiliar. It must be installed from the trusted project checkout in a dedicated
 environment. This skill does not require any other skill to be installed.
-Read the private workspace's `setup.md` to find the configured interpreter. Run
-the commands yourself; explain results and needed inputs in ordinary language.
+Read the selected private workspace's `setup.md` and the active project's applicable
+`AGENTS.md`, when present, to find its interpreter and any documented account-import adapter.
+Reuse that adapter when it fits the authorized collection; keep imports explicit and
+preserve the project's original records. Run the commands yourself and explain results
+and needed inputs in ordinary language.
 
 ## Prepare the collection
 

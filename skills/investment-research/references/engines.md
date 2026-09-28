@@ -3,12 +3,41 @@
 The shared core performs deterministic calculations and exports; it does not contain
 TradingAgents, Vibe-Trading, a broker login, or a hosted language model. Use normal
 research tools without these engines when that is sufficient.
-Read the private workspace's `setup.md`, when present, for the source checkout and
-configured interpreter. Handle installation and commands yourself. Ask the user for
-needed choices or credentials through the supported setup flow instead of handing
+Read the selected private workspace's `setup.md` and the active project's applicable
+`AGENTS.md`, when present, for the configured interpreter and research adapters.
+Handle installation and commands yourself. Ask the user for needed choices or
+credentials through the supported setup flow instead of handing
 them a list of shell commands.
 
-## Project integrations when available
+## Existing private project adapters
+
+Prefer a documented project adapter when it supplies the context, policy checks, and
+report locations required by this user's workflow. Inspect its configuration and help
+before running it. Some projects provide a command like:
+
+```text
+python scripts/run_skill_research.py EXAMPLE --mode technical --dry-run
+python scripts/run_skill_research.py EXAMPLE --mode fundamental --dry-run
+python scripts/run_skill_research.py EXAMPLE --mode both --dry-run
+```
+
+These illustrative commands run from the selected private project with its recorded
+interpreter. The public skills bundle does not supply this host-project script.
+A project may map `technical` to TradingAgents and `fundamental` to Vibe-Trading;
+inspect the actual mapping instead of inferring it from an installed package name.
+
+Check the dry-run result for the requested ticker, mode, model/provider, sharing scope,
+and output paths. Use a live run only within the user's existing authorization for
+the research and model calls. Preserve the workspace's export permissions and the
+project's existing portfolio-context and risk checks. A successful dry run is not a
+completed analysis, and a generated report is not an account refresh or an executed trade.
+
+Keep recurring work tied to the user's requested schedule. A daily review can read
+existing dated reports or run the configured research adapter when authorized; skill
+installation alone does not schedule paid model calls. If the adapter is absent, use
+the portable integration below or public-source research as appropriate to the task.
+
+## Portable optional integrations
 
 If the trusted public project checkout is accessible, inspect its `integrations.json`,
 `docs/integrations.md`, and the scripts' `--help` before running them. These files are

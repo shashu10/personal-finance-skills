@@ -15,7 +15,7 @@ def main() -> int:
     errors = []
     found = {p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md")}
     if found != set(NAMES):
-        errors.append("Expected exactly the six documented skills")
+        errors.append(f"Expected exactly the {len(NAMES)} documented skills")
     for name in NAMES:
         folder = ROOT / "skills" / name
         skill = folder / "SKILL.md"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Link or copy the six skills into a host's chosen skill directory, without overwriting."""
+"""Link or copy the bundled skills into a host's chosen skill directory, without overwriting."""
 from __future__ import annotations
 
 import argparse
@@ -10,7 +10,7 @@ import shutil
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = (
     "finance-setup", "finance-gather", "investment-research",
-    "portfolio-review", "finance-plan", "finance-memory",
+    "portfolio-review", "finance-plan", "finance-memory", "finance-dashboard",
 )
 
 

@@ -7,8 +7,10 @@ implementation steps, not a checklist to hand back to the user.
 ## Reuse before installing
 
 Check for the private workspace's `setup.md`, an existing configured interpreter,
-or a working `finance-core --help`. Reuse a trusted development checkout and its
-environment when the user is already working on this project. Resolve paths explicitly
+the active project's applicable `AGENTS.md`, or a working `finance-core --help`.
+For project-specific commands, read [project integration](project.md).
+Reuse a trusted development checkout and its environment when the user is already
+working on this project. Resolve paths explicitly
 instead of changing global PATH or installing into an unrelated Python environment.
 
 The `npx skills add` installer copies skill folders and references. It does not install
@@ -64,8 +66,9 @@ the path and currency are illustrative. An existing POSIX workspace must be priv
 folder's permissions. Do not initialize over the user's existing ledger in another format.
 
 Save `setup.md` in the private workspace with the source URL/revision, source directory,
-interpreter path, workspace path, and base currency. Do not include credentials. Later
-skills can use that note to call the helpers without asking the user to manage paths.
+interpreter path, workspace path, base currency, and any verified project adapters.
+Do not include credentials. Later skills can use that note to call the helpers without
+asking the user to manage paths.
 
 Keep risk limits unset until the user chooses them. Leave model-context sharing off
 until the user authorizes the relevant export. Optional TradingAgents and Vibe-Trading

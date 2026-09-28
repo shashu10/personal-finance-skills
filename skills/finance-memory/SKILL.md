@@ -13,8 +13,10 @@ hidden cross-chat memory or automatic session hooks.
 
 Use the installed `finance-core` in its dedicated environment and selected private
 workspace. Run `finance-core --help` if needed; this skill requires no sibling skill.
-Read the private workspace's `setup.md` to find the configured interpreter. Run
-the commands yourself; explain results and needed inputs in ordinary language.
+Read the selected private workspace's `setup.md` and the active project's applicable
+`AGENTS.md`, when present, to find the interpreter, record locations, and project adapters.
+Use the selected normalized workspace without overwriting a project's original records.
+Run the commands yourself; explain results and needed inputs in ordinary language.
 Read `facts.json`, `decisions.json`, and relevant dated reports. Resolve `supersedes`
 chains and inspect conflicts before answering from memory.
 

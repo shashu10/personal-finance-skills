@@ -7,6 +7,24 @@ guide an agent to collect data through an available connector, computer-use tool
 statement import and save it in the same ledger. For each source, authenticate, check
 which accounts it covers, and reconcile the results.
 
+## Reuse an existing private project
+
+The skills read the selected private workspace's `setup.md` and the active project's
+applicable `AGENTS.md` for configured adapters. A host project may provide status,
+explicit import, summary, or research commands and an existing local dashboard.
+Read [project integration](../skills/finance-setup/references/project.md) before selecting
+those interfaces. This bundle does not supply the host's configuration or dashboard UI.
+
+For example, a private project may route technical research to TradingAgents and
+fundamental research to Vibe-Trading through its own research command. Use its dry-run
+mode to inspect provider, context, policy checks, and output paths before a live run.
+The public TradingAgents runner below remains available for standalone use. Do not
+replace a configured project adapter with it to bypass the project's existing checks.
+
+The dashboard skill reads documented local status and reports. A host endpoint such as
+`GET /api/skills` can expose that information without starting research or synchronizing
+accounts. Account imports and paid model runs remain separate, authorized actions.
+
 ## Install an optional tool
 
 Use Python 3.12 or newer. Run from this public checkout; replace the external paths below

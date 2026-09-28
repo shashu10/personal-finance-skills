@@ -1,7 +1,7 @@
 # Personal Finance Skills
 
-Six skills that help your AI agent gather your account records, research investments,
-plan your finances, and remember what you decide.
+Seven skills that help your AI agent gather your account records, research investments,
+plan your finances, remember what you decide, and use an existing finance dashboard.
 
 ## Install
 
@@ -9,7 +9,7 @@ Paste this into Codex, Claude Code, or another agent that can install skills and
 local tools:
 
 ```text
-Install all six personal finance skills globally from https://github.com/shashu10/personal-finance-skills
+Install all seven personal finance skills globally from https://github.com/shashu10/personal-finance-skills
 ```
 
 Or install them from your terminal:
@@ -18,7 +18,7 @@ Or install them from your terminal:
 npx skills add shashu10/personal-finance-skills --global
 ```
 
-Select all six skills and your preferred agent when prompted.
+Select all seven skills and your preferred agent when prompted.
 
 ## Start with a prompt
 
@@ -45,10 +45,15 @@ To try it with sample data, ask:
 | [portfolio-review](skills/portfolio-review/SKILL.md) | "How would this proposed purchase change my portfolio and concentration?" |
 | [finance-plan](skills/finance-plan/SKILL.md) | "How long could I cover my expenses if I stopped working?" |
 | [finance-memory](skills/finance-memory/SKILL.md) | "Remember what I decided, why, and what would change my mind." |
+| [finance-dashboard](skills/finance-dashboard/SKILL.md) | "Open my local finance dashboard and check what is current or missing." |
 
 You can also ask the agent to install and use TradingAgents for analyst debates or
 Vibe-Trading for research and backtests. These are optional; the agent handles their
 setup when needed. Model and data providers may charge for those runs.
+
+If you already have a private finance project, the skills can reuse its runtime and
+research commands. Setup records how to find them. The dashboard skill uses an existing
+local dashboard; this repository does not include or host a web application.
 
 ## Your records and privacy
 

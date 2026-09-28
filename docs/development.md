@@ -27,6 +27,18 @@ The installer does not migrate existing personal ledgers. Preserve their origina
 translate one account at a time to the documented import format, and reconcile before
 using a new snapshot for planning. Never apply the demo over existing records.
 
+An existing private project can record its integration in the selected workspace's
+`setup.md` and applicable `AGENTS.md`. Follow the
+[project integration guide](../skills/finance-setup/references/project.md) for runtime,
+account-import, research, and dashboard discovery. Those adapters belong to the host
+project; their paths and private configuration do not belong in the public skills.
+
+The `finance-dashboard` skill can inspect an existing local dashboard and its documented
+read-only status/report interfaces. This repository distributes the skill, not a dashboard
+application. Adding the seventh skill to an existing linked installation preserves the
+six matching links; the installer creates only the missing link. Existing copies still
+require deliberate replacement because the installer does not overwrite files.
+
 ## Development checks
 
 ```bash
