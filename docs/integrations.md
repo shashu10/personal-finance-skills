@@ -26,7 +26,12 @@ metadata. Re-running it can repair its own managed environment. It never logs in
 or starts a model. Source revisions are pinned; transitive dependencies are not locked.
 The offline tests do not exercise optional installs or live upstream integrations.
 
-The revisions were checked on September 27, 2026:
+A manual acceptance run on September 28, 2026 verified both pinned installations on
+macOS with Python 3.13, including dependency consistency, VCS metadata, data-module
+imports, TradingAgents' portfolio schema and managed-environment checks, and Vibe-Trading's
+CLI help. It did not run paid models or brokerage calls in those fresh environments.
+
+The checked revisions are:
 
 | Tool | Source pin | License |
 |---|---|---|
@@ -70,9 +75,13 @@ Live runs call upstream `PortfolioContext.model_validate(...)` and
 context to the trader, risk analysts, and portfolio manager. No vendored patch is needed.
 [Upstream portfolio interface](https://github.com/TauricResearch/TradingAgents#current-holdings).
 
-`--date` defaults to today in UTC, matching the core. The runner rejects historical dates
-because it uses the current accepted ledger and cannot reconstruct past holdings. It
-writes reports, model memory, and cache to a new external output directory. Provider and
+`--date` defaults to today in the host's local timezone, matching TradingAgents' date
+validation. Only that local calendar date is accepted: the runner uses the current
+accepted ledger and cannot reconstruct past holdings. The core still checks ledger
+freshness against today's UTC date. A source dated tomorrow locally is still rejected
+as future-dated until UTC reaches that date; preserve the source date and report the
+limitation. Output directory timestamps also use UTC. The runner writes reports, model
+memory, and cache to a new external output directory. Provider and
 data calls may incur charges, with no promised fixed cost or return. A research rating
 is a proposal; this runner has no brokerage access or order execution.
 
@@ -92,8 +101,10 @@ levels and incomplete pricing/asset coverage. Use its OS-keyring onboarding wher
 
 ## Account-source capability matrix
 
-These upstream options require setup. This project does not include their adapters and
-has not tested live account connections.
+These upstream options require setup; this project does not include their adapters.
+Manual tests exercised Robinhood position, quote and order reads through an existing
+Vibe-Trading connector, and Coinbase balances through computer use. Both produced partial
+snapshots with missing coverage retained as unknown. Other listed routes were not tested live.
 Save the source, account alias, observation time, currency, and coverage with each import.
 Initial login and MFA remain with the account owner. Prefer official exports/APIs, then
 use host-provided computer use to read a logged-in page when appropriate. A skill file

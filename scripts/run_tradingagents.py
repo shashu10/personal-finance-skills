@@ -99,8 +99,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", required=True)
     parser.add_argument("--ticker", required=True)
-    today = datetime.now(timezone.utc).date()
-    parser.add_argument("--date", default=today.isoformat(), help="Analysis date; defaults to today in UTC")
+    # Upstream validates its analysis date against the host's local calendar.
+    # finance-core independently checks ledger freshness using today's UTC date.
+    today = date.today()
+    parser.add_argument("--date", default=today.isoformat(), help="Analysis date; defaults to today in the host's local timezone")
     parser.add_argument("--dry-run", action="store_true", help="Print exact shared portfolio JSON; no model calls or writes")
     parser.add_argument("--output", help="New external directory for this run's reports, memory, and cache")
     parser.add_argument("--provider")

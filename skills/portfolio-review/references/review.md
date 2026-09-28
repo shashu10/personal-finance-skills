@@ -51,10 +51,12 @@ to execute a trade. The CLI checks recorded cash for buys and holdings for sells
 Borrowing, short positions, derivatives, contingent orders and lot-specific taxes
 are outside this initial proposal model.
 
-The core reduces or increases existing holdings at their recorded average marked value;
-the execution-price difference affects projected net value. A proposed limit price
-is not a fresh mark for the entire portfolio. State the price's source and whether
-it is a quote, user scenario, or assumed execution. The core does not fetch quotes.
+For a buy, the core adds the proposed purchase cost to the position's recorded value
+and subtracts the same amount from cash, leaving projected net value unchanged.
+For a sell, it removes the sold shares' proportional recorded value and adds the
+proposed proceeds to cash; the difference changes projected net value. Existing
+shares retain their recorded marks. State whether the proposed price is a quote,
+user scenario, or assumed execution, and cite its source. The core does not fetch quotes.
 
 The report can flag a user-limit breach or insufficient data. It cannot prevent an
 order at a broker. Passing configured limits is not a prediction or a complete

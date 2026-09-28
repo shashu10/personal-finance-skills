@@ -158,6 +158,7 @@ class TradingAgentsRunnerTests(unittest.TestCase):
             self.assertEqual(json.loads(output.getvalue()), payload)
             execute.assert_not_called()
             self.assertEqual(run.call_args.args[0][0], sys.executable)
+            self.assertNotIn("--as-of", run.call_args.args[0])
             self.assertEqual(run.call_args.kwargs["env"]["PYTHONPATH"], str(ROOT / "src"))
             self.assertEqual(list(Path(temporary).iterdir()), [])
 
@@ -190,13 +191,35 @@ class TradingAgentsRunnerTests(unittest.TestCase):
             self.assertIn("Historical portfolio runs", errors.getvalue())
             read.assert_not_called()
 
-    def test_analysis_date_uses_the_same_utc_day_as_core(self):
-        fixed = datetime(2026, 1, 2, 0, 15, tzinfo=timezone.utc)
+    def test_analysis_date_matches_upstream_local_calendar_on_both_sides_of_utc(self):
         payload = {"cash": None, "currency": "USD", "positions": []}
-        with tempfile.TemporaryDirectory() as temporary:
-            with patch.object(runner, "datetime") as clock, patch.object(runner, "read_context", return_value=payload), redirect_stdout(io.StringIO()):
-                clock.now.return_value = fixed
-                self.assertEqual(runner.main(["--workspace", temporary, "--ticker", "AAPL", "--date", "2026-01-02", "--dry-run"]), 0)
+        cases = (
+            (date(2026, 1, 1), datetime(2026, 1, 2, 0, 15, tzinfo=timezone.utc)),
+            (date(2026, 1, 2), datetime(2026, 1, 1, 23, 45, tzinfo=timezone.utc)),
+        )
+        for local_day, utc_instant in cases:
+            class LocalDate(date):
+                @classmethod
+                def today(cls):
+                    return local_day
+
+            with self.subTest(local=local_day, utc=utc_instant.date()), tempfile.TemporaryDirectory() as temporary:
+                with patch.object(runner, "date", LocalDate), patch.object(runner, "datetime") as clock, \
+                        patch.object(runner, "read_context", return_value=payload) as read, \
+                        patch.object(runner, "execute") as execute, \
+                        redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                    clock.now.return_value = utc_instant
+                    arguments = ["--workspace", temporary, "--ticker", "AAPL", "--provider", "synthetic",
+                                 "--deep-model", "test-deep", "--quick-model", "test-quick"]
+                    for explicit_date in ([], ["--date", local_day.isoformat()]):
+                        self.assertEqual(runner.main(arguments + explicit_date), 0)
+                        self.assertEqual(execute.call_args.args[4], local_day.isoformat())
+                        self.assertTrue(execute.call_args.args[2].name.startswith("AAPL-" + utc_instant.strftime("%Y%m%dT")))
+                    read.reset_mock()
+                    execute.reset_mock()
+                    self.assertEqual(runner.main(arguments + ["--date", utc_instant.date().isoformat()]), 2)
+                    read.assert_not_called()
+                    execute.assert_not_called()
 
     def test_supported_api_receives_validated_payload_and_private_paths(self):
         payload = {"currency": "USD", "positions": [{"ticker": "AAPL", "quantity": 2}]}
