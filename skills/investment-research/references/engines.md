@@ -4,8 +4,9 @@ The shared core performs deterministic calculations and exports; it does not con
 TradingAgents, Vibe-Trading, a broker login, or a hosted language model. Use normal
 research tools without these engines when that is sufficient.
 Read the private workspace's `setup.md`, when present, for the source checkout and
-configured interpreter. Handle installation and commands yourself; ask the user for
-needed choices or credentials through the supported setup flow, not a shell checklist.
+configured interpreter. Handle installation and commands yourself. Ask the user for
+needed choices or credentials through the supported setup flow instead of handing
+them a list of shell commands.
 
 ## Project integrations when available
 
@@ -33,7 +34,7 @@ python scripts/run_tradingagents.py --workspace /private/finances --ticker EXAMP
 ```
 
 The ticker is illustrative. Check `--help` for provider/model and output arguments.
-The dry run exposes the exact portfolio payload and requires the configured amount
+The dry run prints the exact portfolio payload and requires the configured amount
 sharing permission; it does not install or invoke upstream models. For a live run,
 use explicit provider and model choices, the managed upstream environment, and a
 private output directory. Keep the payload preview and actual run consistent.
@@ -43,22 +44,22 @@ private output directory. Keep the payload preview and actual run consistent.
 `finance-core context --format relative` omits balances and account identifiers but
 still reveals investment exposure. `--format tradingagents` exports explicit amounts
 for included holdings and is more sensitive; it requires both sharing switches.
-Rules switches permit export generation; verify authorization
-for the actual recipient/provider before transmission. Public ticker-only research
+The sharing switches permit export generation; verify authorization for the actual
+recipient/provider before transmission. Public ticker-only research
 usually does not need personal context.
 
 TradingAgents analysis may combine fundamental, technical, news, and sentiment work.
 Verify the installed version's portfolio interface instead of assuming the historical
 patch used by another project is required. A supplied portfolio is a dated snapshot,
-not continuous account access. Preserve the distinction between research and the
-decision layer's application of portfolio constraints.
+not continuous account access. Keep research separate from applying portfolio
+constraints to a decision.
 
 Vibe-Trading exposes research capabilities and may expose broker operations depending
-on installation and configuration. Discover installed tool/CLI help and choose only
+on installation and configuration. Read the installed tool or CLI help and choose only
 the read/research operations needed. Installing it does not establish broker support
 or authorize orders. Do not turn research outputs into execution commands.
 
-Save engine/version, model/provider, date, data sources, payload sharing scope, and
-errors. Missing API keys or data access should produce a clear limitation; do not
+Record engine/version, model/provider, date, data sources, payload sharing scope, and
+errors. Explain any limitation caused by missing API keys or data access; do not
 claim an engine ran or substitute fabricated findings. Check material claims in the
 output against primary sources before incorporating them into the user's decision.

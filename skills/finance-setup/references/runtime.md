@@ -12,7 +12,7 @@ environment when the user is already working on this project. Resolve paths expl
 instead of changing global PATH or installing into an unrelated Python environment.
 
 The `npx skills add` installer copies skill folders and references. It does not install
-the shared Python package or guarantee that the original repository remains available.
+the shared Python package or guarantee a local source checkout.
 If only this skill folder exists, obtain the source from the
 [official repository](https://github.com/shashu10/personal-finance-skills).
 
@@ -44,7 +44,7 @@ python3 -m venv /absolute/tools/runtime
 
 Replace `python3` with the verified interpreter. On Windows, use
 `/absolute/tools/runtime/Scripts/python.exe` for the environment's interpreter.
-Prefer a normal install for readers; an editable install is appropriate when the user
+Prefer a normal install; an editable install is appropriate when the user
 is developing the source. No broker credentials or model keys are needed for this step.
 
 ## Create and verify the private workspace
@@ -64,7 +64,7 @@ the path and currency are illustrative. An existing POSIX workspace must be priv
 folder's permissions. Do not initialize over the user's existing ledger in another format.
 
 Save `setup.md` in the private workspace with the source URL/revision, source directory,
-interpreter path, workspace path, and base currency. It contains no credentials. Later
+interpreter path, workspace path, and base currency. Do not include credentials. Later
 skills can use that note to call the helpers without asking the user to manage paths.
 
 Keep risk limits unset until the user chooses them. Leave model-context sharing off

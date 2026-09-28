@@ -5,7 +5,7 @@ description: Build personal finance scenarios for cash runway, income changes, e
 
 # Finance plan
 
-Model the user's actual question with explicit inputs and a clear boundary between
+Model the user's actual question with explicit inputs. Separate
 facts, assumptions, calculations, and researched conclusions.
 
 ## Establish the planning question
@@ -29,13 +29,13 @@ Read [planning methods](references/planning.md) for scenario design. For tax,
 residency, benefits, or account eligibility questions, also read
 [tax and jurisdiction research](references/tax-research.md).
 
-## Check the financial foundation
+## Check the account data
 
 Run `finance-core validate --workspace /private/path` and
 `finance-core summary --workspace /private/path --as-of YYYY-MM-DD` for the plan date.
-Review freshness, account coverage, restrictions, FX dates, and known unknowns.
+Review freshness, account coverage, restrictions, FX dates, and missing information.
 Identify whether the plan needs cash, sale proceeds, borrowing, or restricted assets.
-Do not quietly treat net worth, retirement balances, or an estimated private mark
+Do not treat net worth, retirement balances, or an estimated private mark
 as cash available for spending.
 
 ## Calculate the supported scenario
@@ -51,7 +51,7 @@ scenario values. Supply income and one-time cost explicitly even when zero is th
 intended assumption. Unknown income is not verified zero income.
 Record whether recurring expenses already include debt payments and annual costs.
 
-The initial runtime uses unrestricted included cash in eligible accounts. It does
+The current runtime uses unrestricted included cash in eligible accounts. It does
 not liquidate securities, forecast returns, estimate tax, or schedule repayments.
 If the user's question requires those extensions, calculate a separate documented
 scenario with sourced assumptions and show how it differs from the core result.

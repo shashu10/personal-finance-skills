@@ -1,6 +1,6 @@
 # Gradual intake and confirmed facts
 
-Ask in small groups tied to the user's question. Prefer a short answer or choices
+Ask a few questions at a time, tied to the user's question. Prefer a short answer or choices
 when possible, and preserve any earlier explicit answers.
 
 | Topic | Useful facts | Do not infer |
@@ -13,14 +13,14 @@ when possible, and preserve any earlier explicit answers.
 | Tax | Relevant year, jurisdictions, actual presence dates, citizenship/residence permits, filing status, sourced professional advice | Tax residence or a universal rate from nationality or a planned move |
 
 Collect legal names, full addresses, birth dates, identification numbers, and partner
-details only when the immediate task actually needs them. An alias usually suffices.
+details only when the immediate task needs them. An alias is usually enough.
 
 Save observed statements separately from conclusions. For example, a confirmed
 departure date is a fact; the effect on tax residence is a dated research conclusion
 with its own assumptions. An assistant estimate is not a confirmed personal fact.
 
 Use an actual ISO date and a source such as a user statement reference or private
-document path. Amounts belong in text with currency and frequency to avoid ambiguity.
+document path. Write amounts in the text with currency and frequency to avoid ambiguity.
 An illustrative memory envelope is:
 
 ```json

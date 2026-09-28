@@ -1,13 +1,13 @@
 # Research modes
 
-Choose only modes that answer the user's question. A useful evidence table has:
+Choose only modes that answer the user's question. An evidence table should list:
 claim, value/units, financial period, source and publication date, and uncertainty.
 Keep unavailable facts visible rather than filling gaps from similarly named issuers.
 
 ## Business and financials
 
 Read the latest annual and interim reports and material subsequent disclosures.
-Use the applicable regulator and exchange for the listing; SEC filings are not
+Use filings from the applicable regulator and exchange for the listing; SEC filings are not
 universal, and a foreign issuer's form may differ from a domestic company's form.
 Review segment economics, customer concentration, pricing, competition, and dilution.
 Trace cash conversion, capital expenditure, working capital, debt maturities and
@@ -62,7 +62,7 @@ analysis can cover peers or a future plan, never nonexistent issuer price histor
 
 ## Report structure
 
-Scale detail to the question. A concise decision memo can use: conclusion and
+Scale detail to the question. A concise decision memo can include the conclusion and
 conditions; supporting and opposing evidence; valuation/scenarios; catalysts and
 failure conditions; sources and missing data. Keep agent output labeled by engine
 and run date. Multiple agreeing agents can share the same mistaken source.

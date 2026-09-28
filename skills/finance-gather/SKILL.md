@@ -9,7 +9,7 @@ Produce a sourced account snapshot with explicit coverage and reconciliation.
 Use the installed `finance-core` runtime; run `finance-core --help` if its interface
 is unfamiliar. It must be installed from the trusted project checkout in a dedicated
 environment. This skill does not require any other skill to be installed.
-Read the private workspace's `setup.md` to resolve the configured interpreter. Run
+Read the private workspace's `setup.md` to find the configured interpreter. Run
 the commands yourself; explain results and needed inputs in ordinary language.
 
 ## Prepare the collection
@@ -55,12 +55,12 @@ partial statements, uncertain cost basis, and unsupported instruments.
 
 Prepare the complete account snapshot and associated records in a private JSON file.
 Run `finance-core import --workspace /private/path --input /private/path/import.json`.
-The importer validates the normalized contract; it cannot determine whether every
-real-world account or page has been included.
+The importer validates the normalized contract; it cannot determine whether you
+included every real-world account or page.
 
 Use stable transaction and lot IDs so repeated imports are idempotent. Never invent
 new IDs just to bypass a conflicting record. Review the source to resolve conflicts.
-For a genuine correction to the same account date, inspect the old/new difference,
+For a correction to the same account date, inspect the old/new difference,
 retain the evidence, and use `--replace-same-date` only for that correction.
 An older statement should remain evidence; it must not overwrite a newer snapshot.
 

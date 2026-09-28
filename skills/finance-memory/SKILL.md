@@ -6,14 +6,14 @@ description: Save and retrieve confirmed personal financial facts, decisions, an
 # Finance memory
 
 Preserve what the user established and decided, while keeping suggestions and unknowns
-distinct. Files provide explicit continuity; do not claim hidden cross-chat memory
-or automatic session hooks.
+distinct. Use these files to carry facts and decisions between sessions; do not claim
+hidden cross-chat memory or automatic session hooks.
 
 ## Read before writing
 
 Use the installed `finance-core` in its dedicated environment and selected private
 workspace. Run `finance-core --help` if needed; this skill requires no sibling skill.
-Read the private workspace's `setup.md` to resolve the configured interpreter. Run
+Read the private workspace's `setup.md` to find the configured interpreter. Run
 the commands yourself; explain results and needed inputs in ordinary language.
 Read `facts.json`, `decisions.json`, and relevant dated reports. Resolve `supersedes`
 chains and inspect conflicts before answering from memory.
@@ -36,7 +36,7 @@ personal identifiers. A private alias is usually enough.
 Tax interpretations, model forecasts, and guessed preferences are not personal facts.
 Save them in a dated research/scenario report or as an unconfirmed proposal.
 If a user shares a fact during an authorized intake or asks to remember it, save
-their actual statement without adding assumptions or requesting duplicate confirmation.
+their statement without adding assumptions or requesting duplicate confirmation.
 Ask only when the status, meaning, or material conflict cannot be resolved from context.
 
 ## Save without rewriting history
@@ -59,7 +59,7 @@ execution while the ledger remains awaiting reconciliation; state that distincti
 ## Use memory in later work
 
 Prefer the latest applicable confirmed fact or decision. Explain contradictions
-instead of merging them into a new invented story. Preserve dates and conditional
+instead of inventing an explanation for them. Preserve dates and conditional
 choices, such as a plan that applies only after a job starts or a debt is repaid.
 Review facts whose circumstances or rules may have changed before using them again.
 
@@ -68,8 +68,8 @@ does not authorize uploading the file to another service or a separate model API
 Reading it in a hosted agent can itself send its contents to that agent's provider;
 the export switches do not restrict the host's filesystem or computer-use tools.
 If the user asks for deletion, inspect the affected records and references and
-follow the authorized removal request; append-only correction is not a prohibition
-on deleting the user's private data.
+follow the authorized removal request. Append-only correction does not prohibit
+deleting the user's private data.
 
 ## Report the result
 

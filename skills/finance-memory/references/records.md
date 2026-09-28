@@ -23,7 +23,7 @@ an envelope containing one or both lists. All dates below are synthetic examples
 Required fact fields: `id`, `date`, `text`, `source`, `user_confirmed: true`.
 Text should preserve currency, frequency, effective date, and scope when relevant.
 If an estimate is explicitly the user's estimate, say so; do not make it a verified
-account balance. Sensitive facts need only the detail required for future usefulness.
+account balance. Store only the detail about sensitive facts needed for later use.
 
 ## Proposal and accepted decision
 
@@ -53,7 +53,7 @@ account balance. Sensitive facts need only the detail required for future useful
 
 Required decision fields: `id`, `date`, `status`, `text`, `source`, `user_confirmed`.
 Allowed statuses are `proposal`, `confirmed`, `executed`. The latter two require true
-confirmation. An executed record should say whether evidence is an imported fill,
+confirmation. An executed record should identify its evidence as an imported fill,
 statement, receipt, or a user's completion report. It does not mutate `ledger.json`.
 If recording a rejection, use a confirmed decision whose text states the rejected
 proposal and conditions; do not invent an unsupported `rejected` status.

@@ -7,8 +7,8 @@ description: Set up a private personal finance workspace, shared calculation run
 
 Create a usable private workspace and explain what is known, missing, and connected.
 Start with the user's immediate question; do not require a complete financial biography.
-Perform installation and calculation commands yourself using the host's tools. Keep
-the user-facing flow conversational; do not hand the user a Python setup checklist.
+Run installation and calculation commands yourself with the host's tools. Keep
+the conversation natural; do not hand the user a Python setup checklist.
 Ask for help only when a required capability, permission, or login is unavailable.
 
 ## Establish the runtime and workspace
@@ -19,7 +19,7 @@ Ask for help only when a required capability, permission, or login is unavailabl
 2. Reuse a working `finance-core` command when available. Otherwise follow
    [runtime setup](references/runtime.md) to obtain the official source and install
    its helpers in an isolated environment. A global skills install may contain only
-   skill folders, so a missing source checkout is expected and can be fetched by you.
+   skill folders, so a missing source checkout is expected. You can fetch it when needed.
    Record the working runtime path for later skills; do not modify global PATH or
    unrelated environments merely to make a bare command available.
 3. Initialize with `finance-core init --workspace /private/path --base-currency USD`,
@@ -60,8 +60,8 @@ specific export. Export permission does not authorize arbitrary model transmissi
 Explain that a hosted agent may send files it reads and pages it sees to its model
 provider. Local storage and disabled context exports do not make that inference local.
 Optional research engines and connectors are unnecessary for an initial ledger.
-Install them only when the requested workflow needs them and their supported
-authentication and data coverage have been checked in current official documentation.
+Install them only when the requested workflow needs them. Before installing, check
+current official documentation for supported authentication and data coverage.
 
 ## Handoff
 

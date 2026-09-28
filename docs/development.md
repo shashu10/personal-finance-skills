@@ -1,8 +1,8 @@
 # Working inside a larger private workspace
 
 Readers can install through a prompt or `npx skills add`, as shown in the README.
-The commands here are for agents and contributors maintaining a local checkout. For
-a fresh end-user setup, follow the self-contained
+The commands here are for agents and contributors maintaining a local checkout. To
+set up the helpers after installing the skills, follow the
 [agent runtime instructions](../skills/finance-setup/references/runtime.md).
 
 This repository can be a child directory of a private project containing other repos.
@@ -23,7 +23,7 @@ writing and refuses to overwrite existing skills. Start a new chat if the host d
 pick up new skills. Editing a skill does not require copying private records into it.
 
 Select a separate private workspace with `--workspace` or `FINANCE_WORKSPACE`.
-Existing personal ledgers are not migrated automatically. Preserve their originals,
+The installer does not migrate existing personal ledgers. Preserve their originals,
 translate one account at a time to the documented import format, and reconcile before
 using a new snapshot for planning. Never apply the demo over existing records.
 
@@ -39,9 +39,10 @@ python scripts/check_public.py
 git diff --cached --stat
 ```
 
-The check examines the indexed tree. An optional `--denylist` takes a private text file
-of literal values to detect without printing them. Keep that file outside this repo.
-Schema/behavior tests use synthetic temporary workspaces and require no broker login,
+The public-source check examines the indexed tree. An optional `--denylist` takes a
+private text file of literal values to detect without printing them. Keep that file
+outside this repo.
+Schema and behavior tests use synthetic temporary workspaces and require no broker login,
 market-data subscription, or model API key.
 
 The bundled plugin manifest and skills installers distribute the skills; they do not

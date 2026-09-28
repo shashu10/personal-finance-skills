@@ -66,7 +66,8 @@ must be known before those records can be imported.
 
 This example is synthetic. Account types: `bank`, `brokerage`, `retirement`, `hsa`,
 `pension`, `education`, `crypto`, `other`. Status: `verified`, `estimated`, `unverified`.
-Verification means source-backed and reconciled, not merely successfully parsed.
+Verify the figures against the source and reconcile them; successful parsing alone
+does not verify the account.
 Cash and liabilities are nonnegative; represent an overdraft as a liability. The
 current core supports long-only positions. Do not encode a short as a long or silently
 drop it: preserve unsupported positions in evidence and report incomplete coverage.

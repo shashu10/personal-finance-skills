@@ -17,11 +17,11 @@ location and asset listing venue do not alone determine the tax treatment.
 ## Source and qualify the conclusion
 
 Consult current official tax-authority guidance, statutory material and relevant
-treaty text for the actual year. Record effective dates, thresholds, conditions,
+treaty text for the tax year in question. Record effective dates, thresholds, conditions,
 exceptions and filing obligations relevant to the question. Search results and
 summaries are leads, not substitutes for the supporting source.
 
-Separate these layers in the output:
+Separate the following in the output:
 
 1. Confirmed personal facts and their evidence.
 2. The applicable rule and exact primary-source link.
@@ -42,8 +42,8 @@ Research wash-sale or similar anti-avoidance provisions when they actually apply
 ## Material uncertainty
 
 If missing facts materially change the result, show the alternative outcomes and
-the specific evidence needed. Identify a professional-review question for genuinely
-unresolved legal classification or filing choices; avoid a generic disclaimer that
+the specific evidence needed. Identify a specific question for professional review
+when legal classification or filing choices remain unresolved; avoid a generic disclaimer that
 obscures useful work. Do not submit filings, elections, or account certifications
 as part of a planning calculation.
 

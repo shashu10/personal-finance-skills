@@ -5,7 +5,7 @@ arithmetic. Keep manual extensions clearly separate from what the core computed.
 
 ## What the runtime measures
 
-- Accounts carry native-currency values; dated FX converts them to the base currency.
+- Account values use their native currencies; the runtime converts them to the base currency using dated FX.
 - Gross assets are included position values plus cash. Liabilities are separate.
 - Net worth is gross assets less liabilities; this is not spendable cash.
 - An excluded wrapper account contributes no additional assets or debt to totals.
@@ -15,7 +15,7 @@ arithmetic. Keep manual extensions clearly separate from what the core computed.
 
 The runtime does not discover missing accounts or inspect the underlying statements.
 Read coverage notes and validate the inventory before claiming a complete picture.
-Resolve stale/future/unknown source and FX data instead of weakening freshness rules
+Resolve stale, future-dated, or unknown source and FX data instead of weakening freshness rules
 just to obtain a favorable status. User choices of freshness policy remain theirs.
 
 `rules.json` initially has these limits:
@@ -51,7 +51,7 @@ to execute a trade. The CLI checks recorded cash for buys and holdings for sells
 Borrowing, short positions, derivatives, contingent orders and lot-specific taxes
 are outside this initial proposal model.
 
-Existing holdings are reduced/increased at their recorded average marked value;
+The core reduces or increases existing holdings at their recorded average marked value;
 the execution-price difference affects projected net value. A proposed limit price
 is not a fresh mark for the entire portfolio. State the price's source and whether
 it is a quote, user scenario, or assumed execution. The core does not fetch quotes.

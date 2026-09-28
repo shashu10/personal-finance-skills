@@ -2,9 +2,10 @@
 
 The core ledger works without a brokerage connection, model API, or optional research
 package. This project supplies an installer and a portfolio-aware TradingAgents runner.
-It does **not** ship live brokerage adapters or a universal browser scraper. Skills guide
-an available host connector, computer-use tool, or statement import into the same ledger.
-Each source still needs its own authentication, account coverage check, and reconciliation.
+It does not include live brokerage adapters or a universal browser scraper. The skills
+guide an agent to collect data through an available connector, computer-use tool, or
+statement import and save it in the same ledger. For each source, authenticate, check
+which accounts it covers, and reconcile the results.
 
 ## Install an optional tool
 
@@ -23,7 +24,7 @@ and using one tool's environment for the other. It installs the full Git revisio
 [`integrations.json`](../integrations.json), runs `pip check`, and checks installed VCS
 metadata. Re-running it can repair its own managed environment. It never logs into a broker
 or starts a model. Source revisions are pinned; transitive dependencies are not locked.
-Optional installs and live upstream integrations have not been exercised by the offline tests.
+The offline tests do not exercise optional installs or live upstream integrations.
 
 The revisions were checked on September 27, 2026:
 
@@ -69,11 +70,11 @@ Live runs call upstream `PortfolioContext.model_validate(...)` and
 context to the trader, risk analysts, and portfolio manager. No vendored patch is needed.
 [Upstream portfolio interface](https://github.com/TauricResearch/TradingAgents#current-holdings).
 
-`--date` defaults to today in UTC, matching the core. Historical dates are refused because this runner uses the
-current accepted ledger, not a historical holdings reconstruction. Reports, model memory,
-and cache are directed to a new external output directory. Provider/data calls may incur
-charges, and no fixed cost or return is promised. A research rating is a proposal; this
-runner has no brokerage access or order execution.
+`--date` defaults to today in UTC, matching the core. The runner rejects historical dates
+because it uses the current accepted ledger and cannot reconstruct past holdings. It
+writes reports, model memory, and cache to a new external output directory. Provider and
+data calls may incur charges, with no promised fixed cost or return. A research rating
+is a proposal; this runner has no brokerage access or order execution.
 
 ## Use Vibe-Trading independently
 
@@ -91,7 +92,8 @@ levels and incomplete pricing/asset coverage. Use its OS-keyring onboarding wher
 
 ## Account-source capability matrix
 
-These are upstream integration options, **not shipped adapters or tested account connections**.
+These upstream options require setup. This project does not include their adapters and
+has not tested live account connections.
 Save the source, account alias, observation time, currency, and coverage with each import.
 Initial login and MFA remain with the account owner. Prefer official exports/APIs, then
 use host-provided computer use to read a logged-in page when appropriate. A skill file

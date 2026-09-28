@@ -7,7 +7,7 @@ Distinguish salary, variable compensation, benefits, vesting, investment distrib
 and asset-sale proceeds. Unvested equity and hoped-for employment are not current cash.
 Transfers between owned accounts do not create income. A borrowing inflow is debt.
 
-Build an expense bridge from actual or confirmed spending:
+Build an expense breakdown from actual or confirmed spending:
 
 | Component | Treatment |
 | --- | --- |
@@ -20,8 +20,8 @@ Build an expense bridge from actual or confirmed spending:
 
 The core stores transactions but does not infer a budget from them. If deriving
 spending, classify the requested date range, remove internal transfers and duplicated
-imports, distinguish refunds, and reconcile with statement totals. Label extrapolation
-from an incomplete period. Preserve the calculation as a private artifact.
+imports, distinguish refunds, and reconcile with statement totals. State when you
+extrapolate from an incomplete period. Preserve the calculation as a private artifact.
 
 ## Core runway versus extended scenarios
 
@@ -49,8 +49,8 @@ Name cases by the actual assumption, such as "income starts three months later."
 Show the changed inputs, outcome, and unresolved dependencies. Avoid deterministic
 claims about market appreciation. Expected returns are neither cash flow nor guarantees.
 If taxes or expenses are uncertain, show a sensitivity range instead of a single
-precise outcome. A model limitation belongs beside the affected result.
+precise outcome. State each model limitation beside the affected result.
 
-Capture accepted decisions with date, source, condition and review trigger. Save
+Record accepted decisions with date, source, condition and review trigger. Save
 rejected alternatives as rejected in descriptive text when useful, without pretending
 they were executed. A later plan should respect the latest confirmed decision.

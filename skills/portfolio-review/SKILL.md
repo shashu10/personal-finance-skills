@@ -51,13 +51,13 @@ Run `finance-core review --workspace /private/path --proposal /private/path/prop
 Report its status and reasons, including `needs_data` or report-only results.
 The calculation uses a hypothetical cash-funded transaction and does not execute it.
 
-Do not call a post-calculation limit flag a broker block or execution safeguard.
-It also does not model taxes, fees, lot selection, slippage, settlement, or future
+Do not describe a limit flag from the calculation as a broker block or execution safeguard.
+The calculation also does not model taxes, fees, lot selection, slippage, settlement, or future
 price paths. Research those separately when they affect the user's requested decision.
 Unknown tax basis or jurisdiction cannot be replaced by an assumed zero tax cost.
 State a proposal's funding source; do not infer margin authorization from buying power.
 
-## Deliver and preserve the distinction
+## Write and save the review
 
 Lead with the material finding and its practical implication. Compare current and
 proposed values on the same as-of date and valuation basis, with a short assumptions
@@ -65,5 +65,5 @@ table where useful. Cite the exact private snapshot, rules, and proposal files.
 Separate measured facts, model-generated research, and your conditional assessment.
 
 Save the review privately. Record an unaccepted idea only as `proposal`; a confirmed
-decision still is not an executed trade. Reconcile actual fills through subsequent
+decision is not an executed trade. Reconcile actual fills through subsequent
 account evidence before updating positions. No command in this workflow places orders.

@@ -1,7 +1,7 @@
 # Personal Finance Skills
 
-Six skills that help your AI agent gather your accounts, research investments, plan
-around your life, and remember what you decide.
+Six skills that help your AI agent gather your account records, research investments,
+plan your finances, and remember what you decide.
 
 ## Install
 
@@ -27,11 +27,11 @@ After installing, tell your agent:
 > Use finance-setup to set up my personal finance workspace. Handle the technical
 > setup for me, then ask what you need to know about my accounts and goals.
 
-The agent installs the calculation helpers and creates a private place for your
+The agent installs the calculation helpers and creates a private folder for your
 records. You provide the information and handle account logins. Computer use and
 broker connections depend on the tools available in your agent.
 
-Want to try it before connecting anything?
+To try it with sample data, ask:
 
 > Show me how this works with a sample household, without using my real accounts.
 
@@ -39,12 +39,12 @@ Want to try it before connecting anything?
 
 | Skill | Example prompt |
 | --- | --- |
-| [finance-setup](skills/finance-setup/SKILL.md) | “Set this up and learn what matters about my finances.” |
-| [finance-gather](skills/finance-gather/SKILL.md) | “Update my accounts and show my net worth, debts, and anything missing.” |
-| [investment-research](skills/investment-research/SKILL.md) | “Research this stock or IPO. Check the financials, valuation, and risks.” |
-| [portfolio-review](skills/portfolio-review/SKILL.md) | “How would this proposed purchase change my portfolio and concentration?” |
-| [finance-plan](skills/finance-plan/SKILL.md) | “How long could I cover my expenses if I stopped working?” |
-| [finance-memory](skills/finance-memory/SKILL.md) | “Remember what I decided, why, and what would change my mind.” |
+| [finance-setup](skills/finance-setup/SKILL.md) | "Set this up and learn what matters about my finances." |
+| [finance-gather](skills/finance-gather/SKILL.md) | "Update my accounts and show my net worth, debts, and anything missing." |
+| [investment-research](skills/investment-research/SKILL.md) | "Research this stock or IPO. Check the financials, valuation, and risks." |
+| [portfolio-review](skills/portfolio-review/SKILL.md) | "How would this proposed purchase change my portfolio and concentration?" |
+| [finance-plan](skills/finance-plan/SKILL.md) | "How long could I cover my expenses if I stopped working?" |
+| [finance-memory](skills/finance-memory/SKILL.md) | "Remember what I decided, why, and what would change my mind." |
 
 You can also ask the agent to install and use TradingAgents for analyst debates or
 Vibe-Trading for research and backtests. These are optional; the agent handles their
@@ -55,11 +55,11 @@ setup when needed. Model and data providers may charge for those runs.
 Your accounts, personal facts, limits, and decisions stay in a private folder outside
 the public source code. The agent records sources and dates, flags missing or stale
 information, and uses code for calculations. It keeps proposed trades separate from
-decisions you confirmed and transactions that actually happened.
+decisions you confirmed and completed transactions.
 
-Local storage does not mean local AI processing: files your agent reads and screens
-it sees may be sent to its model provider. Keep passwords and tokens in a supported
-credential store. Read more about [privacy and data flow](docs/privacy.md).
+Your agent may send files it reads and screens it sees to its model provider, even
+when you store your records locally. Keep passwords and tokens in a supported credential
+store. Read more about [privacy and data flow](docs/privacy.md).
 
 This first release supports account gathering, research, and planning. Account coverage
 depends on the available APIs, exports, and computer-use tools. It does not place trades

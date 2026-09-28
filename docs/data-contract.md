@@ -8,10 +8,10 @@ of foreign currency in the ledger's base currency and carry their own date and s
 
 Run `finance-core init --workspace /private/path --base-currency USD`. Without
 `--workspace`, use `FINANCE_WORKSPACE`, otherwise `~/.local/share/personal-finance-skills`.
-Every command accepts `--workspace`. Data paths inside this public checkout are refused,
-including paths whose symlinks resolve inside it. Existing data files cannot be symlinks.
-Initialization is idempotent and never overwrites existing files. Demo data requires
-`--demo`; missing real data never falls back to a demo.
+Every command accepts `--workspace`. The core rejects data paths inside this public
+checkout, including paths whose symlinks resolve inside it. Existing data files cannot
+be symlinks. You can repeat initialization without overwriting existing files. Demo
+data requires `--demo`; the core never substitutes demo data for missing real data.
 
 ## Files
 
@@ -23,14 +23,14 @@ Initialization is idempotent and never overwrites existing files. Demo data requ
   and explicit model-sharing switches (both initially false).
 - `decisions.json`: `items` distinguishing `proposal`, `confirmed`, and `executed`.
 
-Private directories use mode 0700 and written files use mode 0600 on POSIX systems;
-existing workspaces with group or other access are refused rather than silently having
-their permissions changed. Windows users should use a private user directory with
-appropriate Windows ACLs. The importer validates
-the complete prospective state before preparing replacement files, then replaces files
-atomically and rolls back ordinary write errors. This is not a database transaction:
-an operating-system crash during multiple replacements may require re-import/reconciliation.
-Keep private backups. Concurrent commands serialize through a workspace lock.
+The core creates private directories with mode 0700 and writes files with mode 0600 on
+POSIX systems. It rejects existing workspaces that allow group or other access without
+changing their permissions. On Windows, use a private user directory with appropriate
+Windows ACLs. The importer validates the complete resulting workspace before preparing
+replacement files, then replaces each file atomically and rolls back ordinary write
+errors. These replacements do not form a database transaction. An operating-system
+crash during multiple replacements may require re-importing and reconciling the data.
+Keep private backups. A workspace lock serializes concurrent commands.
 
 ## Accounts and imports
 
@@ -47,18 +47,19 @@ Positions contain `symbol`, `quantity`, `market_value`, and optional `cost_basis
 All position values are nonnegative; long-only positions are supported in this release.
 Cash and liabilities are nonnegative or unknown. Record a cash overdraft as a liability.
 Set `include_in_totals: false` on any parent/wrapper account already represented by its
-children. This is an explicit importer responsibility; the core cannot discover hidden
-overlap. Missing, unverified, estimated, stale, and future-dated included data prevent a
-summary from being considered ready for planning or proposal assessment.
+children. Whoever prepares the import must identify these overlaps; the core cannot
+discover them. A summary is not ready for planning or proposal assessment if included
+data is missing, unverified, estimated, stale, or future-dated.
 
 Transactions require `id`, `account_id`, `date`, `type`, `amount`, `currency`;
 types include `transfer`, `income`, `expense`, `buy`, `sell`, `dividend`, `fee`, and
 `other`. Transfer amounts are not treated as income. The core does not automatically
 derive income or expenses from transactions. Lots require `id`, `account_id`, `symbol`,
-`acquired_on`, `quantity`, `cost_basis`, and `currency`. Identical IDs are idempotent;
-conflicting contents are rejected. IDs are globally unique within their file. Older
-account snapshots are rejected. Same-date corrected snapshots are accepted only through
-an explicit `--replace-same-date` import flag. A repeated identical snapshot is a no-op.
+`acquired_on`, `quantity`, `cost_basis`, and `currency`. Repeating an ID with identical
+contents makes no change; the core rejects conflicting contents. IDs are globally
+unique within their file. The core rejects older account snapshots and accepts corrected
+snapshots for the same date only with the explicit `--replace-same-date` import flag.
+A repeated identical snapshot makes no change.
 
 ## Planning, proposals, and sharing
 
@@ -71,28 +72,29 @@ schedule debt repayments. Current debt remains visible in the balance-sheet summ
 `review --proposal FILE` accepts `account_id`, `symbol`, `side` (`buy` or `sell`),
 `quantity`, `price`, and `as_of`. It computes a hypothetical cash-funded transaction,
 post-trade symbol concentration and debt/assets. Quantities must be positive and sells
-cannot exceed recorded holdings. Buys cannot exceed recorded cash. Explicit prices are
-used as scenario inputs; the core does not fetch quotes. Existing holdings are adjusted
-at their recorded average marked value, with execution-price differences changing the
-projected account net value. Fees and taxes are not modeled. Null limits mean report
-only. Missing, unknown, stale, future-dated, or unverified inputs produce `needs_data`,
+cannot exceed recorded holdings. Buys cannot exceed recorded cash. The core uses the
+supplied prices for the scenario and does not fetch quotes. It adjusts existing holdings
+at their recorded average marked value; differences from the execution price change
+the projected account net value. The calculation excludes fees and taxes. Null limits
+mean report only. Missing, unknown, stale, future-dated, or unverified inputs produce `needs_data`,
 never `within_limits`. No command places orders.
 
 `context --ticker SYMBOL --format relative` requires `sharing.relative_context: true`.
 It emits selected ticker exposure and fractions, without account identifiers or balances.
 `--format tradingagents` additionally requires `sharing.tradingagents_amounts: true`
 and emits upstream's `{cash,currency,positions:[{ticker,quantity,average_price?}]}` payload.
-This exports all included positive holdings, because upstream
-needs existing holdings rather than treating unmentioned positions as absent. Known cost
-bases for positions denominated entirely in base currency are divided by quantities;
-unknown or foreign-currency cost bases omit `average_price`. `cash` is `null`: household
-cash is not necessarily deployable at the selected broker. The arithmetic remains Decimal internally; this upstream payload alone
-uses JSON numbers required by its interface. Incomplete or stale data returns exit code 2.
-No upstream invocation is made. These flags authorize export generation, not arbitrary model transmission.
+The exporter sends every included positive holding so upstream does not treat omitted
+positions as absent. For positions denominated entirely in base currency, the exporter
+divides known cost bases by quantities. It omits `average_price` for unknown or
+foreign-currency cost bases. It sets `cash` to `null` because household cash may not be
+available at the selected broker. The core uses Decimal arithmetic internally; only
+this upstream payload uses JSON numbers, as its interface requires. Incomplete or stale
+data returns exit code 2. The exporter does not run upstream. These flags permit export
+generation only; sending data to a model requires separate authorization.
 
 `memory --input FILE` accepts `decisions` and/or `facts` lists. Decisions require `id`,
 `date`, `status`, `text`, `source`, and `user_confirmed`; `confirmed` and `executed`
 statuses require `user_confirmed: true`. Facts require `id`, `date`, `text`, `source`,
 and `user_confirmed: true`. This command records user confirmation supplied by the caller;
 it cannot independently prove consent or a trade execution. Proposals remain proposals.
-Repeated identical entries are ignored and conflicting IDs are rejected.
+The core ignores repeated identical entries and rejects conflicting IDs.

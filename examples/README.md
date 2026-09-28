@@ -1,10 +1,10 @@
 # Synthetic examples
 
 These fixtures describe an invented household. They contain no personal data or real
-security recommendations. Dates are fixed deliberately so repeated runs are reproducible.
-Use the matching `--as-of 2026-01-20` for assessments; using today's date correctly reports
-these snapshots as stale. For a fresh runnable demonstration, `init --demo` creates
-synthetic snapshots dated today instead.
+security recommendations. Their fixed dates let you reproduce results across runs.
+Use `--as-of 2026-01-20` for assessments; with today's date, the core correctly reports
+these snapshots as stale. To try a demo with current dates, `init --demo` creates
+synthetic snapshots dated today.
 
 After installing the package, run from the repository root:
 
