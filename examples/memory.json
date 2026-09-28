@@ -1,0 +1,21 @@
+{
+  "decisions": [
+    {
+      "id": "example-decision-1",
+      "date": "2026-01-20",
+      "status": "confirmed",
+      "text": "Keep three months of expenses in unrestricted cash.",
+      "source": "Synthetic user confirmation",
+      "user_confirmed": true
+    }
+  ],
+  "facts": [
+    {
+      "id": "example-fact-1",
+      "date": "2026-01-20",
+      "text": "The example household expects a job transition in six months.",
+      "source": "Synthetic user statement",
+      "user_confirmed": true
+    }
+  ]
+}

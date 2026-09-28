@@ -1,0 +1,45 @@
+{
+  "account": {
+    "id": "example-brokerage",
+    "institution": "Example Brokerage",
+    "type": "brokerage",
+    "currency": "USD",
+    "as_of": "2026-01-20",
+    "source": "Synthetic statement fixture",
+    "status": "verified",
+    "include_in_totals": true,
+    "restricted": false,
+    "positions": [
+      {
+        "symbol": "EXAMPLE",
+        "quantity": "20",
+        "market_value": "4000",
+        "cost_basis": "3000"
+      }
+    ],
+    "cash": "1000",
+    "liabilities": "0",
+    "reported_total": "5000"
+  },
+  "transactions": [
+    {
+      "id": "example-transfer-1",
+      "account_id": "example-brokerage",
+      "date": "2026-01-20",
+      "type": "transfer",
+      "amount": "1000",
+      "currency": "USD"
+    }
+  ],
+  "lots": [
+    {
+      "id": "example-lot-1",
+      "account_id": "example-brokerage",
+      "symbol": "EXAMPLE",
+      "acquired_on": "2025-06-01",
+      "quantity": "20",
+      "cost_basis": "3000",
+      "currency": "USD"
+    }
+  ]
+}

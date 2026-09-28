@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Plan"
+  short_description: "Model cash runway and personal finance scenarios"
+  default_prompt: "Use $finance-plan to build a sourced financial scenario from my confirmed goals and expenses."

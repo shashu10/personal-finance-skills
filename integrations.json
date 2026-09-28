@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-09-27",
+  "python_minimum": "3.12",
+  "pin_scope": "Upstream source commits only; transitive dependency versions are not locked.",
+  "tools": {
+    "tradingagents": {
+      "distribution": "tradingagents",
+      "version_at_revision": "0.5.1",
+      "repository": "https://github.com/TauricResearch/TradingAgents",
+      "revision": "35543d0248bf89fcb92b17a15858ad0c0e940687",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/TauricResearch/TradingAgents/blob/35543d0248bf89fcb92b17a15858ad0c0e940687/LICENSE",
+      "interface": "tradingagents.portfolio.PortfolioContext; TradingAgentsGraph.propagate(..., portfolio=...)",
+      "verification": "Remote main revision inspected; pinned PortfolioContext source validated with synthetic data; actual core dry-run and mocked graph tests. Full optional installation and paid model run not performed."
+    },
+    "vibe-trading": {
+      "distribution": "vibe-trading-ai",
+      "version_at_revision": "0.1.15",
+      "repository": "https://github.com/HKUDS/Vibe-Trading",
+      "revision": "0244eceaaf8d9e8ae79e2355836802acae3d1fc2",
+      "license": "MIT",
+      "license_url": "https://github.com/HKUDS/Vibe-Trading/blob/0244eceaaf8d9e8ae79e2355836802acae3d1fc2/LICENSE",
+      "interface": "vibe-trading CLI; read-only connector profiles and upstream research workflows",
+      "verification": "Remote main revision and packaging inspected; installer planning tests, no live connector or model run."
+    }
+  }
+}

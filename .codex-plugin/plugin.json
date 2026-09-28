@@ -1,0 +1,24 @@
+{
+  "name": "personal-finance-skills",
+  "version": "0.1.0",
+  "description": "Six skills for personal financial records, research, planning, and decision memory.",
+  "author": {
+    "name": "Personal Finance Skills contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Personal Finance Skills",
+    "shortDescription": "Gather accounts, research investments, and plan.",
+    "longDescription": "Maintain a private financial workspace, reconcile account records, research investments, review proposals, calculate scenarios, and remember confirmed decisions.",
+    "developerName": "Personal Finance Skills contributors",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Set up my private financial workspace.",
+      "Gather and reconcile my account balances.",
+      "Review a proposed investment against my rules."
+    ]
+  },
+  "repository": "https://github.com/shashu10/personal-finance-skills",
+  "license": "MIT"
+}

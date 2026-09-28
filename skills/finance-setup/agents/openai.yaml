@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Setup"
+  short_description: "Create a private financial workspace"
+  default_prompt: "Use $finance-setup to set up my private financial workspace and start an account inventory."

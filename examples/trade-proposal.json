@@ -1,0 +1,8 @@
+{
+  "account_id": "example-brokerage",
+  "symbol": "EXAMPLE",
+  "side": "sell",
+  "quantity": "2",
+  "price": "200",
+  "as_of": "2026-01-20"
+}

@@ -1,0 +1,71 @@
+---
+name: finance-setup
+description: Set up a private personal finance workspace, shared calculation runtime, and gradual account and household intake. Use for initial setup or missing prerequisites, not for routine investment research.
+---
+
+# Finance setup
+
+Create a usable private workspace and explain what is known, missing, and connected.
+Start with the user's immediate question; do not require a complete financial biography.
+
+## Establish the runtime and workspace
+
+1. Reuse the user's existing workspace and configured environment when known.
+   Otherwise select a private directory outside the public source checkout and confirm
+   the base currency. A new currency choice does not imply residence or nationality.
+2. Run `finance-core --help` in the installed runtime. If unavailable, locate the
+   user's trusted `personal-finance-skills` checkout and inspect its `pyproject.toml`.
+   Create a dedicated virtual environment and install that checkout with its Python:
+   `python -m pip install -e /absolute/path/to/personal-finance-skills`.
+   Use the resulting environment's `finance-core` or `python -m finance_core`.
+   If no checkout is available, identify the missing runtime; do not invent a package
+   index name, repository URL, or an installation that did not occur.
+3. Initialize with `finance-core init --workspace /private/path --base-currency USD`,
+   replacing the illustrative path and currency with the user's choices.
+   Use `--demo` only when explicitly requesting synthetic demonstration data in a
+   separate workspace. Demonstration records are never real-account fallbacks.
+4. Read the initialized files and run `finance-core validate --workspace /private/path`.
+   Record no passwords, recovery codes, authentication cookies, or API secrets in them.
+
+## Interview gradually
+
+Read [the intake guide](references/intake.md) when collecting profile or account facts.
+Reuse established answers and ask only questions that affect the current task.
+Let the user skip sensitive or unavailable information; skipped fields remain unknown.
+
+Start with account coverage, the planning question, and desired reporting currency.
+Then collect relevant income, expense, household, goals, and tax-jurisdiction facts.
+Distinguish what the user said from an inference and from a researched legal conclusion.
+Neither location nor payroll alone establishes citizenship or tax residence.
+
+`facts.json` and `decisions.json` use append-only records with user confirmation and
+sources. To save intake statements, use the envelope in the intake guide and
+`finance-core memory --workspace /private/path --input /private/path/intake.json`.
+Save explicit answers within the authorized intake without asking for the same
+confirmation again. Leave unanswered questions in a private intake note.
+
+## Configure only what is needed
+
+Inventory institutions using stable aliases such as `main-brokerage`; real account
+numbers belong only in private connector settings if required by a provider.
+Prefer read APIs, then downloaded exports, then user-authorized computer use.
+Initial authorization may require the user's own login and multifactor authentication.
+Store secrets in an available keychain or secret manager, or environment variables.
+
+Keep limits in `rules.json` unset unless the user supplies them. A null limit means
+report only. Keep both model-sharing switches false until the user authorizes that
+specific export. Export permission does not authorize arbitrary model transmission.
+Explain that a hosted agent may send files it reads and pages it sees to its model
+provider. Local storage and disabled context exports do not make that inference local.
+Optional research engines and connectors are unnecessary for an initial ledger.
+Install them only when the requested workflow needs them and their supported
+authentication and data coverage have been checked in current official documentation.
+
+## Handoff
+
+Return the private workspace path, runtime command, base currency, and account coverage.
+Describe accounts as connected, awaiting export, or unknown; an empty ledger is not
+a zero net worth. Identify the next useful missing input rather than a long questionnaire.
+The workspace should contain `ledger.json`, `transactions.json`, `lots.json`,
+`facts.json`, `rules.json`, and `decisions.json`; reports and evidence stay private too.
+State whether validation passed, and never claim setup implies any account was synced.

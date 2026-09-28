@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "max_age_days": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3650
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "max_position_fraction": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d+(?:\\.\\d+)?$",
+              "maxLength": 80
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_debt_to_assets": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d+(?:\\.\\d+)?$",
+              "maxLength": 80
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "max_position_fraction",
+        "max_debt_to_assets"
+      ],
+      "additionalProperties": false
+    },
+    "sharing": {
+      "type": "object",
+      "properties": {
+        "relative_context": {
+          "type": "boolean"
+        },
+        "tradingagents_amounts": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "relative_context",
+        "tradingagents_amounts"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "max_age_days",
+    "limits",
+    "sharing"
+  ],
+  "additionalProperties": true
+}

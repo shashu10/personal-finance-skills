@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_.:-]{0,127}$"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10000
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10000
+          },
+          "user_confirmed": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "proposal",
+              "confirmed",
+              "executed"
+            ]
+          },
+          "supersedes": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_.:-]{0,127}$"
+          }
+        },
+        "required": [
+          "id",
+          "date",
+          "text",
+          "source",
+          "user_confirmed",
+          "status"
+        ],
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "confirmed",
+                    "executed"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "user_confirmed": {
+                  "const": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "items"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Review"
+  short_description: "Review exposures and proposed portfolio changes"
+  default_prompt: "Use $portfolio-review to review my portfolio and assess a proposed change against my own limits."

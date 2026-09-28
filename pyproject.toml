@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personal-finance-skills"
+version = "0.1.0"
+description = "Local financial records, deterministic planning helpers, and six portable agent skills."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Personal Finance Skills contributors"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["PyYAML>=6,<7", "jsonschema>=4,<5"]
+
+[project.scripts]
+finance-core = "finance_core.cli:main"
+
+[project.urls]
+Repository = "https://github.com/shashu10/personal-finance-skills"
+Issues = "https://github.com/shashu10/personal-finance-skills/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

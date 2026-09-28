@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investment Research"
+  short_description: "Research stocks and IPOs with primary sources"
+  default_prompt: "Use $investment-research to research an investment and save the evidence and uncertainties."

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "base_currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "account.schema.json"
+      }
+    },
+    "fx_rates": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "rate": {
+            "type": "string",
+            "pattern": "^\\d+(?:\\.\\d+)?$",
+            "maxLength": 80
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10000
+          }
+        },
+        "required": [
+          "rate",
+          "as_of",
+          "source"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "base_currency",
+    "accounts",
+    "fx_rates"
+  ],
+  "additionalProperties": true
+}

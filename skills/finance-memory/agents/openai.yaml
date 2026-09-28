@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Memory"
+  short_description: "Save confirmed financial facts and decisions"
+  default_prompt: "Use $finance-memory to save the facts and decisions I confirmed and show what changed."

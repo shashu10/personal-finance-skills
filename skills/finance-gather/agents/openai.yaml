@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Gather"
+  short_description: "Reconcile accounts into one private ledger"
+  default_prompt: "Use $finance-gather to gather my account data and reconcile a sourced financial ledger."
