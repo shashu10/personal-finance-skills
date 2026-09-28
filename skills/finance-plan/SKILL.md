@@ -1,22 +1,24 @@
 ---
 name: finance-plan
-description: Build personal finance scenarios for cash runway, income changes, expenses, debt, and life goals using confirmed facts and dated evidence. Use for planning and tax-sensitive scenario research, not tax filing or automatic transactions.
+description: Review household spending and budgets, or model cash runway, income changes, debt, and life goals using confirmed facts and dated evidence. Use for personal finance planning and tax-sensitive scenarios, not tax filing or automatic transactions.
 ---
 
 # Finance plan
 
-Model the user's actual question with explicit inputs. Separate
+Answer the user's spending or planning question with explicit inputs. Separate
 facts, assumptions, calculations, and researched conclusions.
 
 ## Establish the planning question
 
 Read the selected private workspace's `facts.json`, `decisions.json`, `rules.json`,
-and relevant ledger data. Resolve superseded records before using them.
+and relevant ledger data when available. Resolve superseded records before using them.
 Reuse confirmed goals and choices. Ask for missing information only when it changes
 the requested analysis; nationality, tax residence, dependents and employment cannot
 be inferred from balances, location, employer or account type.
 
-Use the installed `finance-core` runtime; inspect `finance-core --help` if needed.
+Use the installed `finance-core` runtime for supported ledger calculations; inspect
+`finance-core --help` if needed. A review of supplied statements can proceed with
+private calculation artifacts without first initializing a complete ledger.
 It must be installed from the trusted project checkout in a dedicated environment.
 Read the selected private workspace's `setup.md` and the active project's applicable
 `AGENTS.md`, when present, to resolve the interpreter and any documented status or summary adapter.
@@ -26,22 +28,29 @@ needed inputs in ordinary language.
 This skill does not require a sibling skill or a hosted research engine.
 Keep scenario inputs, calculations and reports in the private workspace.
 
-Identify the horizon, base currency, goal cost/date, reliable net income, essential
-and discretionary expenses, irregular costs, and any committed debt payments.
+For a budget or spending review, read [spending review](references/spending-review.md).
+Use only the accounts and periods needed for that question; a household spending
+review does not require fetching every investment account or tax document.
+
+For a scenario, identify the horizon, base currency, goal cost/date, reliable net income,
+essential and discretionary expenses, irregular costs, and any committed debt payments.
 Read [planning methods](references/planning.md) for scenario design. For tax,
 residency, benefits, or account eligibility questions, also read
 [tax and jurisdiction research](references/tax-research.md).
 
 ## Check the account data
 
-Run `finance-core validate --workspace /private/path` and
+For plans that rely on account balances, run `finance-core validate --workspace /private/path` and
 `finance-core summary --workspace /private/path --as-of YYYY-MM-DD` for the plan date.
 Review freshness, account coverage, restrictions, FX dates, and missing information.
+For historical spending, also check transaction coverage for the requested period;
+a current balance does not establish a complete transaction history. Explain which
+missing inputs affect the question instead of withholding a supported partial review.
 Identify whether the plan needs cash, sale proceeds, borrowing, or restricted assets.
 Do not treat net worth, retirement balances, or an estimated private mark
 as cash available for spending.
 
-## Calculate the supported scenario
+## Calculate a cash runway scenario
 
 For a cash runway scenario, use explicit base-currency monthly amounts:
 

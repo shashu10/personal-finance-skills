@@ -49,6 +49,11 @@ Replace `python3` with the verified interpreter. On Windows, use
 Prefer a normal install; an editable install is appropriate when the user
 is developing the source. No broker credentials or model keys are needed for this step.
 
+Before recommending or installing an optional skill found in a directory, check its
+actual source revision, `SKILL.md` path, referenced files and supported prerequisites.
+A search listing may still point to a renamed or removed file. Report a stale listing
+instead of substituting an unrelated skill with a similar name.
+
 ## Create and verify the private workspace
 
 Reuse an existing workspace or select a new private directory outside the source
@@ -73,6 +78,52 @@ asking the user to manage paths.
 Keep risk limits unset until the user chooses them. Leave model-context sharing off
 until the user authorizes the relevant export. Optional TradingAgents and Vibe-Trading
 installations follow the fetched source's `docs/integrations.md` only when needed.
+
+## Diagnose an existing setup
+
+Use the paths recorded in `setup.md`. Check only what the requested task needs and
+report the working command or the specific failure:
+
+| Component | Check |
+| --- | --- |
+| Skills | Confirm the selected agent can discover the installed skill and its references. A linked development copy may differ from a global installed copy. |
+| Runtime | Run the recorded interpreter with `-m finance_core --help`. Resolve an import error before changing unrelated environments. |
+| Source | Inspect the recorded checkout revision and working-tree status. Retain local edits. |
+| Workspace | Run `finance_core validate` and `summary` through that interpreter, with the recorded workspace and reporting date. Distinguish valid files from complete, fresh account coverage. |
+| Optional engine | Inspect the selected engine's installer receipt/version, documented help, provider choices and output path. Use its dry run when supported; do not contact accounts or launch a paid model merely to check installation. |
+
+Use the existing project adapter where one is recorded. A missing optional engine
+does not prevent a spending review or ledger calculation. Diagnosis does not initialize
+a replacement workspace, change sharing permissions, or synchronize accounts.
+
+## Update the intended component
+
+An `npx skills` installation and the Python runtime have separate update paths.
+Updating skill folders does not upgrade the calculation package or optional engines.
+
+When the user asks to update installed skills, inspect `npx skills update --help` for
+the installed CLI, select this bundle's skill names and the intended scope, and review
+any local changes before replacement. A linked development checkout is maintained in
+its own repository; do not replace those links with downloaded copies inadvertently.
+
+For a runtime update, inspect the trusted source checkout and proposed revision first.
+Preserve local edits and read any compatibility or migration notes. Back up the private
+workspace before a change that could affect its format. Install the reviewed source
+into the recorded environment using that environment's interpreter, then verify its
+help, validate the existing workspace, and compare the same dated summary. A successful
+package install alone does not establish financial-data compatibility.
+
+Optional engine revisions are recorded in the trusted checkout's `integrations.json`.
+Update only the engine needed for the requested workflow, using its separate managed
+environment and installer checks. Keep provider/model choices and credentials intact.
+Do not upgrade to an arbitrary upstream branch to repair a missing API key.
+
+Record the resulting source revision, runtime path, engine versions and checks in
+`setup.md`, along with what update the user requested. Run updates within that request;
+do not add background updates or reinstall working tools during routine research.
+Preserve the prior setup details when a check fails, and report the failure.
+Never reset a modified checkout, migrate an unrelated ledger, or silently change
+financial rules as part of an update.
 
 ## Prompt-driven demo and calculations
 

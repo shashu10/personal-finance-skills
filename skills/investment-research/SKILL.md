@@ -71,6 +71,10 @@ account identifiers, or balances simply because they are in the workspace.
 
 ## Write and save the report
 
+For a daily update or thesis follow-up, use [recurring review](references/recurring-review.md)
+to compare the previous comparable report, identify new evidence, and preserve the
+run's verification status. A repeated request does not authorize a schedule.
+
 Lead with the answer and its main conditions. Include the thesis, strongest opposing
 evidence, valuation/scenario assumptions, relevant catalysts, and what would change
 the assessment. Distinguish the research conclusion from personal portfolio fit.

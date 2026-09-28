@@ -31,6 +31,8 @@ provider still processes requests and may retain data even when training is disa
    skill folders, so a missing source checkout is expected. You can fetch it when needed.
    Record the working runtime path for later skills; do not modify global PATH or
    unrelated environments merely to make a bare command available.
+   That reference also covers diagnosing an existing setup and updating skills,
+   the runtime, or optional engines without replacing private records.
 3. Initialize with `finance-core init --workspace /private/path --base-currency USD`,
    replacing the illustrative path and currency with the user's choices.
    Use `--demo` only when explicitly requesting synthetic demonstration data in a

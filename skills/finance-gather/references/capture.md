@@ -10,6 +10,10 @@ Keep raw evidence private, with the account alias and statement date in its file
 Prefer structured export fields over OCR when available. Preserve original row IDs,
 currency, sign, settlement/trade date semantics, fees, and statement balances. Inspect
 headers and totals before mapping columns. A blank or unparsable amount is unknown.
+Check whether API amounts are decimal major units or integer minor units. Convert
+using the documented currency exponent; do not divide every currency by 100.
+Interpret signs by field: a negative transaction, credit used, available cash and
+buying power have different meanings. Retain the original value beside its mapping.
 Transfers between owned accounts are not income or investment return. Match both
 sides where available and identify pending or missing counterparts.
 

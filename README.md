@@ -47,9 +47,28 @@ To try it with sample data, ask:
 | [finance-memory](skills/finance-memory/SKILL.md) | "Remember what I decided, why, and what would change my mind." |
 | [finance-dashboard](skills/finance-dashboard/SKILL.md) | "Open my local finance dashboard and check what is current or missing." |
 
+For everyday spending, try:
+
+> Review last month's bank and card statements. Show where my money went, which
+> recurring expenses changed, and anything you could not classify. Save the report.
+
+Or ask:
+
+> Can I afford this purchase while keeping the cash reserve I chose? Use my confirmed
+> income and expenses, and show what changes if my next paycheck arrives late.
+
+The agent can classify spending and save a reproducible calculation from your records.
+The core handles account reconciliation, balance-sheet totals, cash runway and
+hypothetical portfolio changes. It does not automatically categorize transactions,
+predict returns, or calculate a tax return. A spending review can start with the
+relevant statements; you do not need to connect every account first.
+
 You can also ask the agent to install and use TradingAgents for analyst debates or
 Vibe-Trading for research and backtests. These are optional; the agent handles their
 setup when needed. Model and data providers may charge for those runs.
+The bundle includes a pinned installer and a portfolio-aware TradingAgents runner.
+For Vibe-Trading research, the agent follows its documented interfaces or reuses a
+configured project adapter. This repository does not supply a Vibe-Trading research runner.
 
 If you already have a private finance project, the skills can reuse its runtime and
 research commands. Setup records how to find them. The dashboard skill uses an existing
@@ -83,7 +102,8 @@ Python setup and calculation commands are in the
 [agent setup instructions](skills/finance-setup/references/runtime.md).
 The [data contract](docs/data-contract.md), [optional integrations](docs/integrations.md),
 and [development guide](docs/development.md) cover the implementation and tests.
-All public examples use synthetic data.
+The [skill evaluation cases](docs/skill-evaluations.md) describe manual behavior checks;
+they are separate from the automated code tests. All public examples use synthetic data.
 
 Original code and skills: [MIT license](LICENSE). Optional integrations retain their
 own licenses; see [attribution](NOTICE.md).

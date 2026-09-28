@@ -18,10 +18,9 @@ Build an expense breakdown from actual or confirmed spending:
 | One-time goals/costs | Date and funding source; avoid including again in monthly burn |
 | Tax reserves | Sourced estimate or explicit unknown, separate from net income assumptions |
 
-The core stores transactions but does not infer a budget from them. If deriving
-spending, classify the requested date range, remove internal transfers and duplicated
-imports, distinguish refunds, and reconcile with statement totals. State when you
-extrapolate from an incomplete period. Preserve the calculation as a private artifact.
+The core stores transactions but does not infer a budget from them. Follow the
+[spending review](spending-review.md) method when deriving these inputs from statements
+or transactions. Keep the observed spending separate from any proposed budget.
 
 ## Core runway versus extended scenarios
 
