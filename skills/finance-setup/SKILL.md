@@ -11,6 +11,12 @@ Run installation and calculation commands yourself with the host's tools. Keep
 the conversation natural; do not hand the user a Python setup checklist.
 Ask for help only when a required capability, permission, or login is unavailable.
 
+Before collecting personal financial records, recommend turning off optional sharing
+for model training or product improvement in the provider's privacy or data controls.
+Ask the user to check their agent and every model provider it uses, including optional
+research tools. Use current official guidance for the exact settings. Explain that the
+provider still processes requests and may retain data even when training is disabled.
+
 ## Establish the runtime and workspace
 
 1. Reuse the user's existing workspace and configured environment when known.

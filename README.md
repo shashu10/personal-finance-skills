@@ -61,6 +61,12 @@ Your agent may send files it reads and screens it sees to its model provider, ev
 when you store your records locally. Keep passwords and tokens in a supported credential
 store. Read more about [privacy and data flow](docs/privacy.md).
 
+Before loading personal financial records, open your provider's privacy or data controls
+and turn off any optional sharing of your content for model training or product improvement.
+Check the controls for your agent and every model provider it uses, including optional
+research tools. The provider will still process your requests and may retain data even
+when training is disabled.
+
 This first release supports account gathering, research, and planning. Account coverage
 depends on the available APIs, exports, and computer-use tools. It does not place trades
 or file taxes. Check consequential decisions against the sources and get qualified help

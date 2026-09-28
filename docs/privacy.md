@@ -10,6 +10,15 @@ to its model provider, even when you store the records locally. Account aliases 
 exposure of identifiers, but balances, share counts, and ratios can still identify you.
 Review your host's data controls and the permissions of each connector.
 
+Before loading personal financial records, turn off any optional sharing of conversations,
+files, and screenshots for model training or product improvement in your provider's privacy
+or data controls. Check the controls for your agent and every model provider it uses,
+including any API providers connected to TradingAgents or Vibe-Trading. Settings and
+defaults vary by service and plan. The provider will still process your requests and may
+retain data even when training is disabled. For example, OpenAI's API excludes data from
+training by default unless you opt in, but separate retention rules apply; see its
+[data controls documentation](https://developers.openai.com/api/docs/guides/your-data).
+
 The explicit `context` exports have separate sharing switches in `rules.json`.
 These switches control the package's exporters. They do not restrict what an agent can
 read through its own filesystem tools. TradingAgents requires exact quantities and
